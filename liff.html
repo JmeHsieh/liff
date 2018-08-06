@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title 測試></title>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+      $(() => {
+        liff.init(
+          (data) => {
+            alert(data);
+            $("#A").text(data);
+          }, (err) => {
+            alert(err);
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="A">
+      A
+    </div>
+  </body>
+</html>
