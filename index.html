@@ -7,7 +7,7 @@
       $(() => {
         liff.init(
           (data) => {
-            alert(data);
+            alert(JSON.stringify(data));
             $("#A").text(data);
           }, (err) => {
             alert(err);
