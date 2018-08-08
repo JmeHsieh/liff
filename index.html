@@ -4,19 +4,35 @@
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
+      function pp(o) {
+        $("#msg").text(o);
+      }
+      
       $(() => {
         liff.init(
           (data) => {
-            $("#A").text(Object.entries(data.context));
+            pp(Object.entries(data.context));
+            liff.sendMessages([
+              {
+                type:'text',
+                text:'Hello, World!'
+              }
+            ])
+            .then(() => {
+              pp('message sent');
+            })
+            .catch((err) => {
+              pp(err);
+            });
           }, (err) => {
-            alert(err);
+            pp(Object.entries(err));
           });
       });
     </script>
   </head>
   <body>
-    <div id="A">
-      A
+    <div id="msg">
+      msg...
     </div>
   </body>
 </html>
