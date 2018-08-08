@@ -3,6 +3,9 @@
     <title 測試></title>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
     <script>
       function pp(o) {
         let old = $("#msg").text();
@@ -10,40 +13,29 @@
         $("#msg").text(o);
       }
       
+      function sendMsg() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const msg = urlParams.get('msg');
+        liff.sendMessages([
+          {
+            type:'text',
+            text:`Hello, ${msg}!`
+          }
+        ])
+        .then(() => {
+          pp('message sent');
+          // liff.closeWindow();
+        })
+        .catch((err) => {
+          pp(err);
+        });
+      }
+      
       $(() => {
         liff.init(
           (data) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const msg = urlParams.get('msg');
             pp(Object.entries(data.context));
-            setTimeout((() => {
-              liff.sendMessages([
-                {
-                  type:'text',
-                  text:`Hello, ${msg}!`
-                }
-              ])
-              .then(() => {
-                pp('message sent');
-                // liff.closeWindow();
-              })
-              .catch((err) => {
-                pp(err);
-              });
-            }), 2000);
-//             liff.sendMessages([
-//               {
-//                 type:'text',
-//                 text:`Hello, ${msg}!`
-//               }
-//             ])
-//             .then(() => {
-//               pp('message sent');
-//               // liff.closeWindow();
-//             })
-//             .catch((err) => {
-//               pp(err);
-//             });
+            $("#send-btn").show();
           }, (err) => {
             pp(Object.entries(err));
           });
@@ -51,6 +43,9 @@
     </script>
   </head>
   <body>
+    <button id="send-btn" class="btn btn-link" style="display: none;" on-click="sendMsg()">
+      取得動態密碼
+    </button>
     <div id="msg">
       msg...
     </div>
