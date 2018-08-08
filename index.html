@@ -16,6 +16,7 @@
       function sendMsg() {
         const urlParams = new URLSearchParams(window.location.search);
         const msg = urlParams.get('msg');
+        window.alert(`urlParams = ${urlParams}`);
         liff.sendMessages([
           {
             type:'text',
