@@ -20,6 +20,7 @@
             ])
             .then(() => {
               pp('message sent');
+              liff.closeWindow();
             })
             .catch((err) => {
               pp(err);
