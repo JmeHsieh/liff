@@ -7,8 +7,7 @@
       $(() => {
         liff.init(
           (data) => {
-            alert(Object.entries(data));
-            $("#A").text(Object.entries(data));
+            $("#A").text(Object.entries(data.context));
           }, (err) => {
             alert(err);
           });
