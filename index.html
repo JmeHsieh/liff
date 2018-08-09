@@ -306,6 +306,7 @@
       
       $(() => {
         sessionStorage.clear();
+        pp(`After sessionStorage.clear():\n${sessionStorage.getItem('liffinfo')}\n`);
         window.liff = liff;
         liff.init(
           (data) => {
