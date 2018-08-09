@@ -33,6 +33,7 @@
       }
       
       $(() => {
+        window.liff = liff;
         liff.init(
           (data) => {
             pp(Object.entries(data.context));
