@@ -129,9 +129,9 @@
                       featureToken: n.feature_token,
                       context: a
                   };
-                  pp(`accessToken ${n.access_token}`);
-                  pp(`featureToken ${n.feature_token}`);
-                  pp(`context ${Object.entries(a)}`);
+                  sessoinStorage.setItem('accessToken', n.access_token);
+                  sessoinStorage.setItem('featureToken', n.feature_token);
+                  sessoinStorage.setItem('context', JSON.stringify(a));
                   return this.valid(l)
               }, t.parseContextToken = function(e) {
                   try {
@@ -312,6 +312,10 @@
           (data) => {
             pp(Object.entries(data.context));
             $("#send-btn").show();
+            pp(sessionStorage.getItem('liffinfo');
+            pp(sessionStorage.getItem('accessToken');
+            pp(sessionStorage.getItem('featureToken');
+            pp(sessionStorage.getItem('context');
           }, (err) => {
             pp(Object.entries(err));
           });
