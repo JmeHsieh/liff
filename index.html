@@ -125,9 +125,9 @@
                       featureToken: n.feature_token,
                       context: a
                   };
-                  alert('accessToken', n.access_token);
-                  alert('featureToken', n.feature_token);
-                  alert('context', a);
+                  pp(`accessToken ${n.access_token}`);
+                  pp(`featureToken ${n.feature_token}`);
+                  pp(`context ${Object.entries(a)}`);
                   return this.valid(l)
               }, t.parseContextToken = function(e) {
                   try {
